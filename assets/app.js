@@ -31,6 +31,7 @@ $(document).ready(function(){
             var gifSet = response.data;
             //add to page
             gifSet.forEach(function(giphyObj){
+                console.log(giphyObj);
                 var gif =  $("<div>");
                 var img = $("<img>");
                 var rating = $("<h6>");
