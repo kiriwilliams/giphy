@@ -3,35 +3,26 @@ $(document).ready(function(){
     var topics = ["clouds","waves","leaves","windy","snail","dewdrop","fern","ripple"];
     loadButtons(topics);
     function loadButtons(topics){
+        $("#tags").empty();
         for(var i = 0; i < topics.length; i++){
             var tag = topics[i];
             button = $("<button>");
             button.attr({"class":"tag","data-keyword":tag}).text(tag);
             $("#tags").append(button);
-        }
-    }
-
-    $(".tag").on("click",function(){
-        var keyword = $(this).attr("data-keyword");
-        getGifs(keyword);
-    });
-
-
-    $(document).on("click",".giphy",function(){
-
-        if($(this).attr("data-moving") == "true"){
-            $(this).attr({
-                "data-moving":"false",
-                "src": $(this).attr("data-stillURL")
+            button.on("click",function(){
+                var keyword = $(this).attr("data-keyword");
+                getGifs(keyword);
             });
         }
-        else{
-            $(this).attr({
-                "data-moving":"true",
-                "src": $(this).attr("data-movingURL")
-            })
-        }
+    }
+    $("#submit").on("click", function(event){
+        event.preventDefault();
+        topics.push($("#text").val().trim());
+        loadButtons(topics);        
     });
+
+
+
 
     function getGifs(keyword){
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Lt9w0mHeKyolbv2uVngRO2equXDDpbyE&limit=10&q="+keyword;
@@ -61,6 +52,21 @@ $(document).ready(function(){
                 });
                 gif.append(rating).append(img);
                 // console.log(gif);
+                gif.on("click",function(){
+
+                    if($(this).attr("data-moving") == "true"){
+                        $(this).attr({
+                            "data-moving":"false",
+                            "src": $(this).attr("data-stillURL")
+                        });
+                    }
+                    else{
+                        $(this).attr({
+                            "data-moving":"true",
+                            "src": $(this).attr("data-movingURL")
+                        })
+                    }
+                });
                 $(".results").prepend(gif);
             });
            
