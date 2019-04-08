@@ -22,8 +22,6 @@ $(document).ready(function(){
     });
 
 
-
-
     function getGifs(keyword){
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Lt9w0mHeKyolbv2uVngRO2equXDDpbyE&limit=10&q="+keyword;
         $.ajax({
@@ -50,10 +48,7 @@ $(document).ready(function(){
                     "data-movingURL": movingURL,
                     "class": "giphy"
                 });
-                gif.append(rating).append(img);
-                // console.log(gif);
-                gif.on("click",function(){
-
+                img.on("click",function(){
                     if($(this).attr("data-moving") == "true"){
                         $(this).attr({
                             "data-moving":"false",
@@ -67,6 +62,8 @@ $(document).ready(function(){
                         })
                     }
                 });
+                gif.append(rating).append(img);
+                
                 $(".results").prepend(gif);
             });
            
