@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var topics = ["clouds","waves","leaves","windy","snail","dewdrop","fern","ripple"];
+    var topics = ["clouds","waves","leaf","windy","snail","dewdrop","fern","ripple"];
     loadButtons(topics);
     function loadButtons(topics){
         $("#tags").empty();
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 
     function getGifs(keyword){
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Lt9w0mHeKyolbv2uVngRO2equXDDpbyE&limit=10&q="+keyword;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Lt9w0mHeKyolbv2uVngRO2equXDDpbyE&limit=10&q=vaporwave%"+keyword;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -37,8 +37,8 @@ $(document).ready(function(){
 
                 var rated = giphyObj.rating;
                 var moving = false;
-                var stillURL = giphyObj.images.fixed_width_still.url;
-                var movingURL = giphyObj.images.fixed_width.url;
+                var stillURL = giphyObj.images.fixed_height_still.url;
+                var movingURL = giphyObj.images.fixed_height.url;
 
                 gif.attr("class","block");
                 rating.text("Rating: "+rated);
