@@ -40,6 +40,7 @@ $(document).ready(function(){
                 var stillURL = giphyObj.images.fixed_width_still.url;
                 var movingURL = giphyObj.images.fixed_width.url;
 
+                gif.attr("class","block");
                 rating.text("Rating: "+rated);
                 img.attr({
                     "src": stillURL,
