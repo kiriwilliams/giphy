@@ -12,12 +12,26 @@ $(document).ready(function(){
     }
 
     $(".tag").on("click",function(){
-        console.log("hi");
         var keyword = $(this).attr("data-keyword");
         getGifs(keyword);
     });
 
-    $("")
+
+    $(document).on("click",".giphy",function(){
+
+        if($(this).attr("data-moving") == "true"){
+            $(this).attr({
+                "data-moving":"false",
+                "src": $(this).attr("data-stillURL")
+            });
+        }
+        else{
+            $(this).attr({
+                "data-moving":"true",
+                "src": $(this).attr("data-movingURL")
+            })
+        }
+    });
 
     function getGifs(keyword){
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Lt9w0mHeKyolbv2uVngRO2equXDDpbyE&limit=10&q="+keyword;
@@ -42,10 +56,11 @@ $(document).ready(function(){
                     "src": stillURL,
                     "data-moving": moving,
                     "data-stillURL": stillURL,
-                    "data-movingURL": movingURL
+                    "data-movingURL": movingURL,
+                    "class": "giphy"
                 });
-                gif.append(rating).append(img).addClass("gif");
-                console.log(gif);
+                gif.append(rating).append(img);
+                // console.log(gif);
                 $(".results").prepend(gif);
             });
            
