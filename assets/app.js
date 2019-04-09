@@ -66,7 +66,7 @@ $(document).ready(function(){
                 });
                 gif.append(rating).append(img);
                 
-                $(".results").prepend(gif);
+                $("#results").prepend(gif);
             });
            
         })
