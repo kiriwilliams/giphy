@@ -42,7 +42,7 @@ $(document).ready(function(){
                 var movingURL = giphyObj.images.fixed_height.url;
 
                 gif.attr("class","block");
-                rating.text("Rating: "+rated);
+                rating.text("Rated "+rated);
                 img.attr({
                     "src": stillURL,
                     "data-moving": moving,
