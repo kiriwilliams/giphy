@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var topics = ["clouds","waves","leaf","windy","snail","dewdrop","fern","ripple"];
+    var topics = ["clouds","waves","leaf","apple","windows","anime","statue","skeleton", "vibes"];
     loadButtons(topics);
     function loadButtons(topics){
         $("#tags").empty();
@@ -56,12 +56,14 @@ $(document).ready(function(){
                             "data-moving":"false",
                             "src": $(this).attr("data-stillURL")
                         });
+                        $("body").css({"background":"url('"+stillURL+"')"});
                     }
                     else{
                         $(this).attr({
                             "data-moving":"true",
                             "src": $(this).attr("data-movingURL")
-                        })
+                        });
+                        $("body").css({"background":"url('"+movingURL+"')"});
                     }
                 });
                 gif.append(rating).append(img);
